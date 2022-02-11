@@ -1,0 +1,18 @@
+<h2 class="headline-2">Авторизация</h2>
+<form (ngSubmit)="submit()" [formGroup]="form">
+    <app-input
+            [control]="loginControl"
+            [errorMessage]="loginControl.errors | errorMessage"
+            label="Логин"
+            placeholder="Логин"
+            type="text"
+    ></app-input>
+    <app-input
+            [control]="passwordControl"
+            [errorMessage]="passwordControl.errors | errorMessage"
+            label="Пароль"
+            placeholder="Пароль"
+            type="password"
+    ></app-input>
+    <app-button class="margin-top-small" type="submit">Войти</app-button>
+</form>
