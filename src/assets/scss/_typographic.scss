@@ -1,0 +1,81 @@
+@import "variables";
+
+.headline-1 {
+  font-family: $fontBase;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: $colorText;
+}
+
+.headline-2 {
+  @extend .headline-1;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.headline-3 {
+  @extend .headline-1;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.headline-4 {
+  @extend .headline-1;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.headline-5 {
+  @extend .headline-1;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.headline-6 {
+  @extend .headline-1;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.body-16 {
+  font-family: $fontBase;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.body-16-medium {
+  @extend .body-16;
+  font-family: $fontAccent;
+  font-weight: 600;
+}
+
+.body-14 {
+  @extend .body-16;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.body-14-medium {
+  @extend .body-14;
+  font-family: $fontAccent;
+  font-weight: 600;
+}
+
+.caption-12 {
+  font-family: $fontBase;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.caption-8 {
+  @extend .caption-12;
+  font-size: 8px;
+  line-height: 12px;
+}

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 import { AuthService } from '../auth/auth.service'
 import { Router } from '@angular/router'
 import { GetTokenResponseInterface } from '../../models/get-token-response.interface'
@@ -11,7 +11,8 @@ export class AppService {
   constructor(
     private auth: AuthService,
     private router: Router
-  ) { }
+  ) {
+  }
 
   init(): void {
     if (this.auth.getToken()) {

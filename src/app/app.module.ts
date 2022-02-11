@@ -6,27 +6,40 @@ import { AppComponent } from './app.component'
 import { AppInitializer } from './app-initializer'
 import { AuthService } from './services/auth/auth.service'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { HttpClientModule } from '@angular/common/http'
-import { CookieModule } from 'ngx-cookie'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { JwtInterceptor } from './interceptors/jwt.interceptor'
+import { ResponseInterceptor } from './interceptors/response.interceptor'
+import { MainLayoutModule } from './layout/main-layout/main-layout.module'
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MainLayoutModule,
     BrowserAnimationsModule,
-    CookieModule.forRoot()
   ],
   providers: [
     {
-    provide: APP_INITIALIZER,
-    useFactory: AppInitializer,
-    multi: true,
-    deps: [AuthService]
-  }
+      provide: APP_INITIALIZER,
+      useFactory: AppInitializer,
+      multi: true,
+      deps: [AuthService]
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })

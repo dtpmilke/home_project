@@ -4,8 +4,10 @@ import { RefreshTokenResponseInterface } from '../../models/refresh-token-respon
 import { AuthApiService } from '../api/auth-api.service'
 import { GetTokenResponseInterface } from '../../models/get-token-response.interface'
 import { tap } from 'rxjs/operators'
-import { CookieService } from 'ngx-cookie'
+
 import { Router } from '@angular/router'
+import { CookieService } from 'ngx-cookie-service'
+import { UserInterface } from '../../models/user.interface'
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +29,13 @@ export class AuthService {
   }
 
   logout(): void {
-    this.cookie.remove('userData')
+    this.cookie.delete('userData')
     this.deleteToken()
+    location.reload();
+  }
+
+  setUserData(data: UserInterface): void {
+    this.cookie.set('userData', JSON.stringify(data), {expires: 2147483647})
   }
 
   isAuth(): boolean {

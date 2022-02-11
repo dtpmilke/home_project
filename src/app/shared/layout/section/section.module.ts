@@ -7,6 +7,9 @@ import { SectionComponent } from './section.component'
   declarations: [
     SectionComponent
   ],
+  exports: [
+    SectionComponent
+  ],
   imports: [
     CommonModule
   ]

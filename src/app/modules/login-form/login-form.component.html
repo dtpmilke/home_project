@@ -1,1 +1,11 @@
-<p>login-form works!</p>
+<app-section>
+    <app-container>
+        <app-white-wrapper>
+            <ng-container [ngSwitch]="state?.page">
+                <app-login-step (submitted)="loginSubmit($event)" *ngSwitchCase="'form'"></app-login-step>
+                <app-final-step (clickedBack)="setPage('form')" *ngSwitchCase="'final'"></app-final-step>
+                <app-preloader-step *ngSwitchCase="'load'"></app-preloader-step>
+            </ng-container>
+        </app-white-wrapper>
+    </app-container>
+</app-section>

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core'
-import { RouterModule, Routes } from '@angular/router'
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router'
 import { NotAuthGuard } from './guards/not-auth.guard'
-import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
+
 import { AuthGuard } from './guards/auth.guard'
+import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
 
 const routes: Routes = [
   {
@@ -14,6 +15,13 @@ const routes: Routes = [
     path: '',
     component: MainLayoutComponent,
     canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule),
+        canActivate: [AuthGuard]
+      }
+    ]
   },
   {
     path: '',
@@ -28,7 +36,9 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules,
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

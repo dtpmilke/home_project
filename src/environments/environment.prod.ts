@@ -3,4 +3,4 @@ export const environment = {
   mockup: false,
   name: 'prod',
   apiUrl: '/'
-};
+}

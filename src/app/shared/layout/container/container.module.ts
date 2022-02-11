@@ -7,6 +7,9 @@ import { ContainerComponent } from './container.component'
   declarations: [
     ContainerComponent
   ],
+  exports: [
+    ContainerComponent
+  ],
   imports: [
     CommonModule
   ]

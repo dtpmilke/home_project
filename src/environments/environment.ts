@@ -7,7 +7,7 @@ export const environment = {
   mockup: true,
   name: 'test',
   apiUrl: '/'
-};
+}
 
 /*
  * For easier debugging in development mode, you can import the following file
